@@ -1,0 +1,26 @@
+/* Notification Popup Style */
+.notification {
+    border-radius: 10px;
+    background-color: rgba(30, 30, 30, 0.95);
+    color: #ffffff;
+    padding: 10px;
+    border: 2px solid #5e81ac;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+}
+
+.notification-title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #88c0d0;
+}
+
+.notification-body {
+    font-size: 13px;
+    color: #d8dee9;
+}
+
+.notification-close-button {
+    background-color: transparent;
+    color: #ffffff;
+}
