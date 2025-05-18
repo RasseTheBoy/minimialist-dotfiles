@@ -41,6 +41,8 @@ sudo pacman -S --noconfirm --needed \
     qbittorrent \  # Torrent client
     chezmoi \  # dotfiles manager
     pacman-contrib \  #  Required for `checkupdates`
+    xdg-desktop-portal-hyprland \
+    xdg-desktop-portal-gtk \
 
     # Themes
     gtk3-demos \
@@ -53,9 +55,11 @@ sudo pacman -S --noconfirm --needed \
     noto-fonts-emoji \
     ttf-droid \  # Required for vscode
 
-    # Files
+    # Media
     udiskie udiskie2 \ # Removable media automount
-    nautilus \  # File manager
+    nemo \  # File manager
+    nemo-fileroller \
+    nemo-terminal \
     zathura \  # PDF/image viewer
     yazi \  # Terminal file manager
     unzip \
@@ -68,16 +72,7 @@ sudo pacman -S --noconfirm --needed \
     gamemode \
     lib32-gamemode \  # GameMode (32-bit)
     lib32-vulkan-radeon lib32-vulkan-icd-loader lib32-vulkan-mesa-layers \  # Vulkan (32-bit)
-    gamescope \
-
-
-
-
-# # ProtonVPN
-# sudo pacman -S --noconfirm --needed \
-#     networkmanager \
-#     network-manager-applet \
-#     proton-vpn-gtk-app
+    gamescope
 
 
 # Install packages (AUR)
@@ -88,6 +83,7 @@ yay -S --noconfirm --needed \
     flatseal \  # Flatpak permissions manager
     hyprshot \  # Hyprland screenshot tool
     hyprshade \  # Hyprland night light daemon
+    selectdefaultapplication-git \  # See default applications
     zen-browser-bin  # Zen Browser (Firefox)
 
 
