@@ -1,0 +1,12 @@
+{{ $device_type_lst := list "laptop" "desktop" }}
+{{ $device_type := promptChoice "What type of device are you on?" $device_type_lst }}
+[data]
+  device_type = "{{- $device_type -}}"
+
+
+[edit]
+  command = "nvim"
+
+[hooks.edit-config-template.post]
+  command = "chezmoi"
+  args = ["init"]
