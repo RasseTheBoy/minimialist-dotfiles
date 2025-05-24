@@ -17,6 +17,11 @@ else
 fi
 
 
+# Foot wrapper
+echo "Copying foot wrapper..."
+sudo cp ../bin/foot-wrapper.fish /usr/local/bin/
+
+
 # Install fish shell
 if ! is_installed fish; then
   ehco "Installing fish shell..."

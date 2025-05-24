@@ -15,7 +15,7 @@ sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 ```
 
-### BEFORE CONTINUING
+### Login
 
 Launch once and login to make sure everything is working.
 

@@ -26,3 +26,13 @@ Include = /etc/pacman.d/mirrorlist
 \*after reboot\*
 
 `steam`
+
+## Optional
+
+```bash
+sudo pacman -Syu \
+    gamemode
+    lib32-gamemode  # GameMode (32-bit)
+    lib32-vulkan-radeon lib32-vulkan-icd-loader lib32-vulkan-mesa-layers \  # Vulkan (32-bit)
+    gamescope
+```

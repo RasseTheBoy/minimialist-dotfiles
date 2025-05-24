@@ -3,6 +3,10 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
+# Enable bluetooth
+echo "Enabling bluetooth..."
+sudo systemctl enable --now bluetooth
+
 # Install yay (Yet Another Yogurt - AUR helper)
 if ! command -v yay &>/dev/null; then
   echo "Installing yay..."
@@ -22,13 +26,21 @@ echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
 
+
+# Keyd service
+sudo pacman -S --noconfirm keyd
+echo "Copying keyd config file..."
+sudo mkdir -p /etc/keyd
+sudo cp ../etc/keyd/default.conf /etc/keyd/default.conf
+sudo systemctl enable --now keyd
+
+
 pacman_packages=(
   firefox
   neovim
   code  # Visual Studio Code
   fastfetch
   hyprpicker  # Colot picker
-  keyd  # Key remapping daemon
   bitwarden
   piper  # Logitech mouse daemon
   blueman  # Bluetooth manager
@@ -43,6 +55,7 @@ pacman_packages=(
   kanshi  # Multi monitor profiles
   pavucontrol  # Volume control (pulseaudio)
   scrcpy
+  fuzzel  # Application launcher
 
   # Git
   git
@@ -69,7 +82,7 @@ pacman_packages=(
   ttf-droid  # Required for vscode
 
   # Files
-  udiskie udiskie2 # Removable media automount
+  udisks2 # Removable media automount
   nemo  # File manager
   nemo-fileroller
   nemo-terminal
@@ -86,12 +99,6 @@ pacman_packages=(
   vlc  # Media player
   bluez
   bluez-utils
-
-  # Gaming
-  gamemode
-  lib32-gamemode  # GameMode (32-bit)
-  lib32-vulkan-radeon lib32-vulkan-icd-loader lib32-vulkan-mesa-layers \  # Vulkan (32-bit)
-  gamescope
 )
 
 
@@ -108,34 +115,22 @@ yay_packages=(
   selectdefaultapplication-git  # See default applications
   betterbird-bin  # Email client
   voikko-libreoffice # Finnish spell checking for libreoffice
-
-  # Discord
-  discord
-  openasar-git
-  legcord-git
 )
 
 # Install packages (pacman)
 echo "Installing packages (pacman)..."
-sudo pacman -S --noconfirm --needed "${pacman_packages[@]}"
-
+for package in "${pacman_packages[@]}"; do
+  sudo pacman -S --noconfirm --needed "$package"
+done
 
 # Install packages (AUR)
 echo "Installing packages (AUR)..."
-yay -S --noconfirm --needed "${yay_packages[@]}"
+for package in "${yay_packages[@]}"; do
+  yay -S --noconfirm "$package"
+done
 
 
-# Keyd service
-echo "Copying keyd config file..."
-sudo mkdir -p /etc/keyd
-sudo cp ../etc/keyd/default.conf /etc/keyd/default.conf
-sudo systemctl enable --now keyd
 
 
-# Foot wrapper
-echo "Copying foot wrapper..."
-sudo cp ../bin/foot-wrapper.fish /usr/local/bin/
 
-# Enable bluetooth
-echo "Enabling bluetooth..."
-sudo systemctl enable --now bluetooth
+
